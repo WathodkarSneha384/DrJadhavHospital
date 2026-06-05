@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, Calendar } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig, galleryImages } from "@/lib/site";
 import { marathiContent } from "@/lib/i18n";
@@ -57,13 +57,6 @@ export default function MarathiPage() {
               >
                 <Calendar className="h-5 w-5" />
                 {t.hero.ctaBook}
-              </a>
-              <a
-                href={`tel:${siteConfig.phone}`}
-                className="inline-flex items-center gap-2 rounded-xl border-2 border-brand-700 px-6 py-3 font-semibold text-brand-700"
-              >
-                <Phone className="h-5 w-5" />
-                {t.hero.ctaCall}
               </a>
             </div>
           </div>

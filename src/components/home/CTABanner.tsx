@@ -1,6 +1,5 @@
 "use client";
 
-import { Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/site";
 import { BookAppointmentButton } from "@/components/ui/BookAppointmentButton";
@@ -61,14 +60,6 @@ export function CTABanner() {
 
               <div className="mt-10 flex flex-wrap justify-center gap-4">
                 <BookAppointmentButton className="rounded-md px-8 py-3.5 text-sm shadow-lg" />
-                <a
-                  href={siteConfig.phoneTel}
-                  className="inline-flex items-center gap-2 rounded-md border-2 px-8 py-3.5 text-sm font-bold backdrop-blur transition hover:scale-[1.02]"
-                  style={{ borderColor: "rgba(255,255,255,0.25)", background: "rgba(255,255,255,0.06)" }}
-                >
-                  <Phone className="h-4.5 w-4.5" />
-                  {siteConfig.phoneDisplay}
-                </a>
               </div>
             </div>
           </div>

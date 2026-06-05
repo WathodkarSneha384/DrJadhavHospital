@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { Phone, CheckCircle2, Star, Shield, Clock, MapPin } from "lucide-react";
+import { CheckCircle2, Star, Shield, Clock, MapPin } from "lucide-react";
 import { siteConfig, galleryImages } from "@/lib/site";
 import { BookAppointmentButton } from "@/components/ui/BookAppointmentButton";
 import { EASE_OUT } from "@/components/motion/presets";
@@ -138,13 +138,6 @@ export function Hero() {
 
             <motion.div variants={item} className="mt-8 flex flex-wrap gap-3">
               <BookAppointmentButton className="px-7 py-3.5 text-[14px] shadow-lg" />
-              <a
-                href={siteConfig.phoneTel}
-                className="inline-flex items-center gap-2 rounded-lg border-2 border-brand-200 px-7 py-3.5 text-[14px] font-bold text-brand-800 transition hover:border-brand-400 hover:bg-surface-50"
-              >
-                <Phone className="h-4 w-4 shrink-0" />
-                {siteConfig.phoneDisplay}
-              </a>
             </motion.div>
 
             <motion.a

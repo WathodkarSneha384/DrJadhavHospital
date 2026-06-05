@@ -71,7 +71,6 @@ export function TreatmentsGrid() {
           {treatments.map((treatment, i) => {
             const Icon = icons[treatment.icon as keyof typeof icons] ?? Activity;
             const accent = cardAccents[i] ?? cardAccents[0];
-            const num = String(i + 1).padStart(2, "0");
 
             return (
               <motion.article
@@ -101,14 +100,6 @@ export function TreatmentsGrid() {
                   className="relative flex items-center justify-between px-6 py-5 overflow-hidden"
                   style={{ background: `linear-gradient(135deg, ${accent.from} 0%, ${accent.to} 100%)` }}
                 >
-                  {/* Big decorative number */}
-                  <span
-                    className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 font-display font-extrabold leading-none select-none"
-                    style={{ fontSize: "5rem", color: "rgba(255,255,255,0.06)", letterSpacing: "-0.05em" }}
-                  >
-                    {num}
-                  </span>
-
                   {/* Icon */}
                   <div
                     className="flex h-12 w-12 items-center justify-center rounded-lg text-white"

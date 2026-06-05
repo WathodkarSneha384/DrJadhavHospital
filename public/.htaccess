@@ -1,0 +1,42 @@
+# Hostinger / Apache — Next.js static export
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Canonical host: drjadhavpileslaser.com
+  RewriteCond %{HTTP_HOST} ^www\.drjadhavpileslaser\.com$ [NC]
+  RewriteRule ^ https://drjadhavpileslaser.com%{REQUEST_URI} [L,R=301]
+
+  # Force HTTPS after SSL is enabled in Hostinger
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://drjadhavpileslaser.com%{REQUEST_URI} [L,R=301]
+
+  # Never rewrite Next.js assets or static files
+  RewriteRule ^_next/ - [L]
+  RewriteRule \.(css|js|mjs|map|png|jpe?g|gif|webp|svg|ico|woff2?|txt|xml|html)$ - [L]
+
+  # If folder exists, serve it
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # If file exists, serve it
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # Fallback to directory index.html (trailingSlash export)
+  RewriteCond %{REQUEST_URI} !^/_next/
+  RewriteRule ^(.+?)/?$ $1/index.html [L]
+</IfModule>
+
+# Cache static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
