@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-brand: #0e1f5e;
+    --color-brand-light: #1e3897;
+    --color-accent: #c9973e;
+    --color-accent-hover: #b8860b;
+    --color-surface-50: #f8f9fc;
+    --color-surface-100: #f0f2f8;
+    --color-surface-200: #e2e6f2;
+    --color-surface-300: #cdd3ea;
+    --color-gold: #c9973e;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #1a2744;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #a9b5e1;
+    color: #060e2e;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 font-semibold text-white shadow-md transition duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98];
+    background-color: var(--color-accent);
+    letter-spacing: 0.02em;
+  }
+  .btn-primary:hover {
+    background-color: var(--color-accent-hover);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border-2 bg-white px-6 py-3 font-semibold transition duration-300 hover:scale-[1.02];
+    border-color: var(--color-brand);
+    color: var(--color-brand);
+    letter-spacing: 0.02em;
+  }
+  .btn-secondary:hover {
+    background-color: var(--color-surface-100);
+  }
+
+  .section-eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.18em];
+    color: var(--color-accent);
+  }
+
+  .card-medical {
+    @apply rounded-xl border bg-white transition duration-300;
+    border-color: var(--color-surface-200);
+    box-shadow: 0 2px 16px -2px rgba(13, 31, 74, 0.08);
+  }
+  .card-medical:hover {
+    border-color: #a9b5e1;
+    box-shadow: 0 8px 32px -6px rgba(13, 31, 74, 0.14);
+  }
+
+  .shadow-glow-accent {
+    box-shadow: 0 4px 20px -4px rgba(201, 151, 62, 0.55), 0 0 0 1px rgba(201, 151, 62, 0.15);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Enterprise gold divider */
+  .gold-rule {
+    @apply mx-auto my-0 h-0.5 w-16 rounded-full;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.group:hover .marquee-track {
+  animation-play-state: paused;
+}
