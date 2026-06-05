@@ -29,19 +29,19 @@ export function VideoReviews() {
   const video = videoReviews[0];
 
   return (
-    <section className="overflow-hidden bg-surface-50 py-10 sm:py-16" aria-labelledby="video-reviews-heading">
+    <section className="overflow-hidden bg-surface-50 py-4 sm:py-6" aria-labelledby="video-reviews-heading">
       <div className="mx-auto w-full max-w-7xl min-w-0 px-4 sm:px-6">
 
-        <AnimateIn direction="up" className="mb-6 text-center sm:mb-10">
-          <p className="section-eyebrow mb-3">Patient Stories</p>
-          <div className="gold-rule mb-4" />
+        <AnimateIn direction="up" className="mb-3 text-center sm:mb-5">
+          <p className="section-eyebrow mb-2">Patient Stories</p>
+          <div className="gold-rule mb-3" />
           <h2
             id="video-reviews-heading"
             className="font-display text-2xl font-bold text-brand-900 sm:text-3xl lg:text-4xl"
           >
             Hear From Our Patients
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm text-slate-500 sm:text-base">
+          <p className="mx-auto mt-2 max-w-xl text-sm text-slate-500 sm:text-base">
             Real reviews from verified Google patients — {siteConfig.rating.value}★ rated clinic in Wakad, Pune
           </p>
         </AnimateIn>

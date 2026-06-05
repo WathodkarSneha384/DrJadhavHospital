@@ -26,7 +26,7 @@ const cardAccents = [
 export function TreatmentsGrid() {
   return (
     <section
-      className="relative overflow-hidden py-12"
+      className="relative overflow-hidden pt-12 pb-4 sm:pb-5"
       style={{ background: "linear-gradient(180deg, #ffffff 0%, #f8f9fc 100%)" }}
       aria-labelledby="treatments-heading"
     >

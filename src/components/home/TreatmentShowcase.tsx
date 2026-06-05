@@ -55,7 +55,7 @@ export function TreatmentShowcase() {
   const content = tabContent[active] ?? tabContent.piles;
 
   return (
-    <section className="bg-surface-50 py-12">
+    <section className="bg-surface-50 pt-4 pb-10 sm:pt-5 sm:pb-12">
       <div className="mx-auto max-w-7xl px-4">
         <AnimateIn direction="up" className="mb-8 text-center">
           <p className="section-eyebrow mb-3">Conditions We Treat</p>
