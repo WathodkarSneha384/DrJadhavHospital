@@ -28,11 +28,20 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-export const metadata: Metadata = buildMetadata({
-  title: `${siteConfig.name} | Piles Laser Specialist Wakad Pune`,
-  description: siteConfig.description,
-  path: "/",
-});
+export const metadata: Metadata = {
+  ...buildMetadata({
+    title: `${siteConfig.name} | Piles Laser Specialist Wakad Pune`,
+    description: siteConfig.description,
+    path: "/",
+  }),
+  icons: {
+    icon: [
+      { url: "/Asset/logo-fixed.png", type: "image/png" },
+    ],
+    apple: "/Asset/logo-fixed.png",
+    shortcut: "/Asset/logo-fixed.png",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -46,7 +55,7 @@ export default function RootLayout({
           data={[organizationJsonLd(), physicianJsonLd(), faqJsonLd(faqs), howToJsonLd()]}
         />
         <Header />
-        <main>{children}</main>
+        <main className="overflow-x-hidden">{children}</main>
         <Footer />
         <FloatingActions />
       </body>

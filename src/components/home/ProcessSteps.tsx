@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import { recoveryProcess, siteConfig } from "@/lib/site";
@@ -8,7 +7,7 @@ import { AnimateIn } from "@/components/motion/AnimateIn";
 
 export function ProcessSteps() {
   return (
-    <section className="relative overflow-hidden py-24">
+    <section className="relative overflow-hidden py-12">
       <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #060e2e 0%, #0a1745 40%, #162960 80%, #0e1f5e 100%)" }} />
       <div
         className="absolute inset-0 opacity-[0.04]"
@@ -29,13 +28,13 @@ export function ProcessSteps() {
           </p>
         </AnimateIn>
 
-        <div className="mt-14 overflow-x-auto pb-4 scrollbar-hide">
-          <div className="flex min-w-max gap-6 px-2 lg:min-w-0 lg:grid lg:grid-cols-4 lg:gap-6">
+        <div className="mt-10">
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
             {recoveryProcess.map((step, i) => (
               <AnimateIn key={step.step} direction="up" delay={i * 0.1}>
                 <motion.div
                   whileHover={{ scale: 1.03 }}
-                  className="relative w-[280px] rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md lg:w-auto"
+                  className="relative rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-md sm:p-6"
                 >
                   {i < recoveryProcess.length - 1 && (
                     <div className="absolute -right-3 top-10 hidden h-0.5 w-6 lg:block" style={{ background: "rgba(201,151,62,0.5)" }} />
@@ -51,6 +50,7 @@ export function ProcessSteps() {
           </div>
         </div>
 
+
         <AnimateIn direction="up" delay={0.3} className="mt-12 flex flex-wrap justify-center gap-4">
           <a
             href={`tel:${siteConfig.phone}`}
@@ -59,12 +59,12 @@ export function ProcessSteps() {
             <Phone className="h-5 w-5" />
             Call {siteConfig.phoneDisplay}
           </a>
-          <Link
-            href="/contact#appointment"
+          <a
+            href={`tel:${siteConfig.phone}`}
             className="inline-flex items-center gap-2 rounded-md border-2 border-white/30 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
           >
-            Book Appointment Online
-          </Link>
+            Book Appointment
+          </a>
         </AnimateIn>
       </div>
     </section>

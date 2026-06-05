@@ -10,9 +10,9 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-surface-50 py-24" id="faq">
+    <section className="bg-surface-50 py-12" id="faq">
       <div className="mx-auto max-w-3xl px-4">
-        <AnimateIn direction="up" className="mb-14 text-center">
+        <AnimateIn direction="up" className="mb-8 text-center">
           <p className="section-eyebrow mb-3">FAQ</p>
           <div className="gold-rule mb-5" />
           <h2 className="font-display text-3xl font-bold text-brand-900 sm:text-4xl">
@@ -25,7 +25,7 @@ export function FAQ() {
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
-              <AnimateIn key={faq.question} direction="up" delay={i * 0.04}>
+              <AnimateIn key={faq.question} direction="up" delay={Math.min(i * 0.03, 0.15)}>
                 <div
                   className="overflow-hidden rounded-xl bg-white transition-shadow duration-300"
                   style={{

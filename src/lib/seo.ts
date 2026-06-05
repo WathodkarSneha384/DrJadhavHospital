@@ -158,7 +158,7 @@ export function organizationJsonLd() {
       { "@type": "MedicalProcedure", name: "Laser Piles Surgery", procedureType: "https://schema.org/SurgicalProcedure" },
       { "@type": "MedicalProcedure", name: "Laser Hemorrhoidectomy", procedureType: "https://schema.org/SurgicalProcedure" },
       { "@type": "MedicalProcedure", name: "Anal Fissure Treatment (LIS)", procedureType: "https://schema.org/SurgicalProcedure" },
-      { "@type": "MedicalProcedure", name: "Laser Fistula Surgery (DLAFT/VAAFT)", procedureType: "https://schema.org/SurgicalProcedure" },
+      { "@type": "MedicalProcedure", name: "Laser Fistula Surgery (DLAFT)", procedureType: "https://schema.org/SurgicalProcedure" },
       { "@type": "MedicalProcedure", name: "Video Proctoscopy", procedureType: "https://schema.org/DiagnosticProcedure" },
       { "@type": "MedicalProcedure", name: "Pilonidal Sinus Laser Treatment", procedureType: "https://schema.org/SurgicalProcedure" },
     ],
@@ -196,7 +196,7 @@ export function physicianJsonLd() {
       "Pilonidal Sinus Treatment",
       "Video Proctoscopy",
       "Laser Proctology",
-      "VAAFT (Video Assisted Anal Fistula Treatment)",
+      "DLAFT (Diode Laser Anal Fistula Treatment)",
       "DLAFT (Diode Laser Anal Fistula Treatment)",
     ],
     aggregateRating: {
@@ -273,7 +273,7 @@ export function howToJsonLd() {
         "@type": "HowToStep",
         position: 1,
         name: "Book Consultation",
-        text: "Call +91 96656 12777, WhatsApp, or book online. Same-day appointments available at Mankar Chowk, Wakad.",
+        text: "Call +91 96656 12777 to book. Same-day appointments available at Mankar Chowk, Wakad.",
       },
       {
         "@type": "HowToStep",

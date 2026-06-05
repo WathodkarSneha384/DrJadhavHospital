@@ -7,14 +7,14 @@ import { ShieldCheck } from "lucide-react";
 
 export function InsurancePartners() {
   return (
-    <section className="overflow-hidden border-y py-16" style={{ borderColor: "rgba(13,31,74,0.08)", background: "linear-gradient(180deg, #f8f9fc, #ffffff)" }}>
+    <section className="overflow-hidden border-y py-10" style={{ borderColor: "rgba(13,31,74,0.08)", background: "linear-gradient(180deg, #f8f9fc, #ffffff)" }}>
       <div className="mx-auto max-w-7xl px-4">
         <AnimateIn direction="up" className="mb-10 text-center">
           <div className="mb-3 flex items-center justify-center gap-2">
             <ShieldCheck className="h-5 w-5" style={{ color: "#c9973e" }} />
             <p className="section-eyebrow">Insurance</p>
           </div>
-          <h2 className="font-display text-2xl font-bold text-brand-900 sm:text-3xl">
+          <h2 className="font-display text-xl font-bold text-brand-900 sm:text-2xl lg:text-3xl">
             Cashless &amp; Reimbursement Partners
           </h2>
           <p className="mt-2 text-sm text-slate-500">

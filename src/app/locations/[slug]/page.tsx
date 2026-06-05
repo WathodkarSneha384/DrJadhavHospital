@@ -120,7 +120,7 @@ export default async function LocationPage({ params }: Props) {
               <ul className="list-disc space-y-2 pl-5">
                 <li>Laser hemorrhoidectomy — no stitches, same-day discharge</li>
                 <li>Laser LIS for chronic anal fissure</li>
-                <li>VAAFT / DLAFT laser fistula treatment</li>
+                <li>DLAFT laser fistula treatment</li>
                 <li>PMJAY, ESI, Star Health & major insurers accepted</li>
               </ul>
             </div>
@@ -142,12 +142,12 @@ export default async function LocationPage({ params }: Props) {
                 <Phone className="h-4 w-4" />
                 {siteConfig.phoneDisplay}
               </a>
-              <Link
-                href="/contact#appointment"
+              <a
+                href={`tel:${siteConfig.phone}`}
                 className="block rounded-xl bg-accent-600 py-3 text-center font-semibold text-white hover:bg-accent-500"
               >
                 Book Appointment
-              </Link>
+              </a>
               <Link
                 href="/locations"
                 className="block text-center text-sm text-brand-700 hover:underline"

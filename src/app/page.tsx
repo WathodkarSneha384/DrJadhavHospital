@@ -17,12 +17,12 @@ export default function HomePage() {
       <Hero />
       <AreasServed />
       <TreatmentsGrid />
+      <VideoReviews />
       <TreatmentShowcase />
       <HospitalGallery />
       <WhyChooseUs />
       <ProcessSteps />
       <DoctorPreview />
-      <VideoReviews />
       <InsurancePartners />
       <FAQ />
       <CTABanner />

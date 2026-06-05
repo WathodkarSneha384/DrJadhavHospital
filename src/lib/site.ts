@@ -8,6 +8,7 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://drjadhavpileslaser.com",
   locale: "en_IN",
   phone: "+919665612777",
+  phoneTel: "tel:+919665612777",
   phoneDisplay: "+91 96656 12777",
   phoneAlt: "+919096965217",
   phoneAltDisplay: "+91 90969 65217",
@@ -52,11 +53,11 @@ export const siteConfig = {
     name: "Dr. Satish Jadhav",
     title: "MD, FPC, CCKS",
     role: "Senior Proctologist & Laser Surgeon",
-    bio: "Leading proctologist with 10+ years in advanced laser proctology. Expert in VAAFT, laser hemorrhoidectomy, LIS for fissure & DLAFT fistula treatment. 5,000+ successful procedures with 95%+ success rate at Wakad, Pune.",
+    bio: "Leading proctologist with 10+ years in advanced laser proctology. Expert in laser hemorrhoidectomy, LIS for fissure & DLAFT fistula treatment. 5,000+ successful procedures with 95%+ success rate at Wakad, Pune.",
     image: "/Asset/Dr Jadhav.png",
     expertise: [
       "Advanced Laser Piles Surgery",
-      "VAAFT for Anal Fistula",
+      "Laser Fistula Surgery (DLAFT)",
       "Laser Fissurectomy (LIS)",
       "Diode Laser Proctology",
       "Video Proctoscopy",
@@ -197,7 +198,7 @@ export const recoveryProcess = [
   {
     step: 1,
     title: "Book Consultation",
-    text: "Call, WhatsApp, or book online. Same-day appointments available.",
+    text: "Call us directly. Same-day appointments available.",
   },
   {
     step: 2,
@@ -244,7 +245,7 @@ export const treatments = [
     badge: "Laser Surgery",
     metaTitle: "Fistula Treatment Pune | DLAFT Laser Fistula Surgery Wakad",
     description:
-      "DLAFT laser fistulotomy & VAAFT. Very low recurrence rate. Trusted fistula specialist in Wakad, Pune.",
+      "DLAFT laser fistulotomy. Very low recurrence rate. Trusted fistula specialist in Wakad, Pune.",
     icon: "shield-check",
   },
   {
@@ -307,7 +308,7 @@ export const testimonials = [
   {
     name: "Suresh Patil",
     location: "Pimpri, Pune",
-    text: "Best piles hospital in Pune! My fistula treatment (VAAFT) was completed without complications. No recurrence even after 6 months!",
+    text: "Best piles hospital in Pune! My fistula treatment was completed without complications. No recurrence even after 6 months!",
     rating: 5,
   },
   {

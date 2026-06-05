@@ -51,13 +51,13 @@ export default function MarathiPage() {
             </div>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="/contact#appointment"
+              <a
+                href={`tel:${siteConfig.phone}`}
                 className="inline-flex items-center gap-2 rounded-xl bg-accent-600 px-6 py-3 font-semibold text-white"
               >
                 <Calendar className="h-5 w-5" />
                 {t.hero.ctaBook}
-              </Link>
+              </a>
               <a
                 href={`tel:${siteConfig.phone}`}
                 className="inline-flex items-center gap-2 rounded-xl border-2 border-brand-700 px-6 py-3 font-semibold text-brand-700"

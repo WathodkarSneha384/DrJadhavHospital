@@ -1,105 +1,43 @@
 "use client";
 
-import { useState } from "react";
+import { Phone, Clock } from "lucide-react";
 import { siteConfig } from "@/lib/site";
-import { whatsappUrl } from "@/lib/utils";
+import { BookAppointmentButton } from "@/components/ui/BookAppointmentButton";
 
 export function AppointmentForm() {
-  const [submitted, setSubmitted] = useState(false);
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = new FormData(e.currentTarget);
-    const name = form.get("name") as string;
-    const phone = form.get("phone") as string;
-    const service = form.get("service") as string;
-    const message = `Hello, I would like to book an appointment.\nName: ${name}\nPhone: ${phone}\nTreatment: ${service}`;
-    window.open(whatsappUrl(message), "_blank");
-    setSubmitted(true);
-  }
-
-  if (submitted) {
-    return (
-      <div className="rounded-2xl border border-accent-200 bg-accent-50 p-8 text-center">
-        <p className="font-semibold text-accent-800">
-          Thank you! We&apos;ve opened WhatsApp — send your message to confirm your
-          appointment.
-        </p>
-        <p className="mt-2 text-sm text-slate-600">
-          Or call us directly at{" "}
-          <a href={`tel:${siteConfig.phone}`} className="font-semibold text-brand-700">
-            {siteConfig.phoneDisplay}
-          </a>
-        </p>
-      </div>
-    );
-  }
-
   return (
-    <form
-      id="appointment"
-      onSubmit={handleSubmit}
-      className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:p-8"
-    >
-      <h2 className="font-display text-2xl font-bold text-slate-900">Book an Appointment</h2>
-      <p className="text-sm text-slate-600">
-        Fill the form — we&apos;ll connect you via WhatsApp for quick confirmation.
-      </p>
+    <div id="appointment" className="flex flex-col gap-4">
+      <BookAppointmentButton className="w-full justify-center px-7 py-3.5 text-[14px] shadow-lg" />
 
-      <div>
-        <label htmlFor="name" className="mb-1 block text-sm font-medium text-slate-700">
-          Full Name *
-        </label>
-        <input
-          id="name"
-          name="name"
-          required
-          className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
-          placeholder="Your name"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="phone" className="mb-1 block text-sm font-medium text-slate-700">
-          Mobile Number *
-        </label>
-        <input
-          id="phone"
-          name="phone"
-          type="tel"
-          required
-          pattern="[0-9]{10}"
-          className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
-          placeholder="10-digit mobile"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="service" className="mb-1 block text-sm font-medium text-slate-700">
-          Treatment Required *
-        </label>
-        <select
-          id="service"
-          name="service"
-          required
-          className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
-        >
-          <option value="">Select treatment</option>
-          <option value="Piles">Piles / Hemorrhoids</option>
-          <option value="Fissure">Anal Fissure</option>
-          <option value="Fistula">Fistula</option>
-          <option value="Laser Surgery">Laser Piles Surgery</option>
-          <option value="Non-Surgical">Non-Surgical Consultation</option>
-          <option value="Follow-up">Follow-up Visit</option>
-        </select>
-      </div>
-
-      <button
-        type="submit"
-        className="w-full rounded-xl bg-accent-600 py-3.5 font-semibold text-white transition hover:bg-accent-500"
+      <a
+        href={`tel:${siteConfig.phoneAlt}`}
+        className="flex items-center gap-4 rounded-xl border p-5 transition hover:shadow-md sm:p-6"
+        style={{ borderColor: "rgba(13,31,74,0.12)", background: "#f8f9fc" }}
       >
-        Request Appointment via WhatsApp
-      </button>
-    </form>
+        <div
+          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl"
+          style={{ background: "rgba(10,23,69,0.07)" }}
+        >
+          <Phone className="h-6 w-6" style={{ color: "#0a1745" }} />
+        </div>
+        <div className="flex-1">
+          <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-slate-400">Alternate Number</p>
+          <p className="mt-0.5 font-display text-xl font-bold text-brand-900">{siteConfig.phoneAltDisplay}</p>
+        </div>
+        <span className="shrink-0 text-xs font-semibold text-brand-700">Call →</span>
+      </a>
+
+      <div
+        className="flex items-start gap-3 rounded-xl p-4 sm:p-5"
+        style={{ background: "rgba(201,151,62,0.07)", border: "1px solid rgba(201,151,62,0.22)" }}
+      >
+        <Clock className="mt-0.5 h-5 w-5 shrink-0" style={{ color: "#c9973e" }} />
+        <div>
+          <p className="text-xs font-bold uppercase tracking-wider" style={{ color: "#9a6f0a" }}>OPD Timings</p>
+          <p className="mt-1 text-sm font-medium text-brand-900">{siteConfig.hours.opd}</p>
+          <p className="mt-0.5 text-xs font-semibold" style={{ color: "#c9973e" }}>{siteConfig.hours.emergency}</p>
+        </div>
+      </div>
+    </div>
   );
 }

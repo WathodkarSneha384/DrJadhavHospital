@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { siteConfig, navLinks, treatments } from "@/lib/site";
 import { fullAddress } from "@/lib/seo";
@@ -14,11 +15,15 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-2 lg:grid-cols-4">
         {/* Brand column */}
         <div>
-          <div
-            className="mb-4 flex h-12 w-12 items-center justify-center rounded-md font-display text-sm font-bold text-white ring-1 ring-gold-500/40"
-            style={{ background: "linear-gradient(135deg, #0e1f5e, #162960)" }}
-          >
-            DJ
+          <div className="mb-4 inline-flex shrink-0 items-center justify-center rounded-lg bg-white p-2 ring-1 ring-gold-500/50">
+            <Image
+              src="/Asset/logo-fixed.png"
+              alt="Dr. Jadhav Laser Centre Logo"
+              width={72}
+              height={88}
+              className="h-auto w-[72px] max-w-full object-contain object-center"
+              sizes="72px"
+            />
           </div>
           <h2 className="font-display text-lg font-bold text-white">{siteConfig.shortName}</h2>
           <p className="mt-2 text-sm leading-relaxed text-blue-200/80">{siteConfig.description}</p>
@@ -48,11 +53,6 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
-            <li>
-              <Link href="/mr" className="text-blue-200/80 transition hover:text-white">
-                मराठी
-              </Link>
-            </li>
           </ul>
         </div>
 

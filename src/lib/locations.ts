@@ -52,7 +52,7 @@ export const locations: {
     name: "Pimpri Chinchwad",
     distance: "~8 km",
     description:
-      "Best piles treatment for PCMC patients. Fistula VAAFT, laser hemorrhoidectomy, and complete post-op support.",
+      "Best piles treatment for PCMC patients. DLAFT fistula laser surgery, laser hemorrhoidectomy, and complete post-op support.",
   },
   {
     slug: "ravet",

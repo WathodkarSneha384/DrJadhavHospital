@@ -60,9 +60,9 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/contact#appointment" className="rounded-lg px-6 py-3 text-sm font-bold text-white" style={{ background: "linear-gradient(135deg, #c9973e, #9a6f0a)" }}>
+              <a href={`tel:${siteConfig.phone}`} className="rounded-lg px-6 py-3 text-sm font-bold text-white" style={{ background: "linear-gradient(135deg, #c9973e, #9a6f0a)" }}>
                 Book Consultation
-              </Link>
+              </a>
               <Link href="/doctors" className="rounded-lg border-2 border-brand-200 px-6 py-3 text-sm font-bold text-brand-800 hover:bg-surface-50">
                 Meet Our Doctors
               </Link>

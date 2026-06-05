@@ -1,35 +1,42 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { EASE_OUT } from "./presets";
 
-type Direction = "up" | "down" | "left" | "right" | "none";
+type Direction = "up" | "down" | "none";
 
-const offsets: Record<Direction, { x: number; y: number }> = {
-  up: { x: 0, y: 48 },
-  down: { x: 0, y: -48 },
-  left: { x: 64, y: 0 },
-  right: { x: -64, y: 0 },
-  none: { x: 0, y: 0 },
+const offsets: Record<Direction, number> = {
+  up: 14,
+  down: -10,
+  none: 0,
 };
 
-const variants: Variants = {
-  hidden: (dir: Direction) => ({
-    opacity: 0,
-    ...offsets[dir],
-    filter: "blur(6px)",
-  }),
-  visible: {
-    opacity: 1,
-    x: 0,
-    y: 0,
-    filter: "blur(0px)",
-    transition: {
-      duration: 0.7,
-      ease: [0.22, 1, 0.36, 1],
+function buildVariants(
+  direction: Direction,
+  delay: number,
+  reduced: boolean
+): Variants {
+  if (reduced) {
+    return {
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: { duration: 0.2, delay },
+      },
+    };
+  }
+
+  const y = offsets[direction];
+  return {
+    hidden: { opacity: 0, y },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.55, ease: EASE_OUT, delay },
     },
-  },
-};
+  };
+}
 
 export function AnimateIn({
   children,
@@ -37,7 +44,7 @@ export function AnimateIn({
   direction = "up",
   delay = 0,
   once = true,
-  amount = 0.2,
+  amount = 0.12,
 }: {
   children: React.ReactNode;
   className?: string;
@@ -46,15 +53,15 @@ export function AnimateIn({
   once?: boolean;
   amount?: number;
 }) {
+  const reduced = useReducedMotion() ?? false;
+
   return (
     <motion.div
       className={cn(className)}
-      custom={direction}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, amount }}
-      variants={variants}
-      transition={{ delay }}
+      viewport={{ once, amount, margin: "0px 0px -40px 0px" }}
+      variants={buildVariants(direction, delay, reduced)}
     >
       {children}
     </motion.div>
@@ -64,24 +71,32 @@ export function AnimateIn({
 export function StaggerContainer({
   children,
   className,
-  stagger = 0.1,
+  stagger = 0.07,
+  delayChildren = 0.04,
 }: {
   children: React.ReactNode;
   className?: string;
   stagger?: number;
+  delayChildren?: number;
 }) {
+  const reduced = useReducedMotion() ?? false;
+
   return (
     <motion.div
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.15 }}
-      variants={{
-        hidden: {},
-        visible: {
-          transition: { staggerChildren: stagger },
-        },
-      }}
+      viewport={{ once: true, amount: 0.08, margin: "0px 0px -40px 0px" }}
+      variants={
+        reduced
+          ? { hidden: {}, visible: { transition: { staggerChildren: 0 } } }
+          : {
+              hidden: {},
+              visible: {
+                transition: { staggerChildren: stagger, delayChildren },
+              },
+            }
+      }
     >
       {children}
     </motion.div>
@@ -91,28 +106,61 @@ export function StaggerContainer({
 export function StaggerItem({
   children,
   className,
-  direction = "up",
 }: {
   children: React.ReactNode;
   className?: string;
-  direction?: Direction;
 }) {
+  const reduced = useReducedMotion() ?? false;
+
   return (
     <motion.div
       className={className}
-      custom={direction}
-      variants={{
-        hidden: { opacity: 0, ...offsets[direction], filter: "blur(4px)" },
-        visible: {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          filter: "blur(0px)",
-          transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-        },
-      }}
+      variants={
+        reduced
+          ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
+          : {
+              hidden: { opacity: 0, y: 12 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.5, ease: EASE_OUT },
+              },
+            }
+      }
     >
       {children}
     </motion.div>
+  );
+}
+
+/** Headings & paragraphs — fade up only, never horizontal or blur */
+export function TextReveal({
+  children,
+  className,
+  as: Tag = "div",
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  as?: "div" | "h1" | "h2" | "h3" | "p" | "span";
+  delay?: number;
+}) {
+  const reduced = useReducedMotion() ?? false;
+  const MotionTag = motion[Tag] as typeof motion.div;
+
+  return (
+    <MotionTag
+      className={className}
+      initial={reduced ? { opacity: 0 } : { opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "0px 0px -30px 0px" }}
+      transition={
+        reduced
+          ? { duration: 0.2, delay }
+          : { duration: 0.5, ease: EASE_OUT, delay }
+      }
+    >
+      {children}
+    </MotionTag>
   );
 }

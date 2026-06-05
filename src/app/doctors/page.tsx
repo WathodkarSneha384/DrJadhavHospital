@@ -9,9 +9,9 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = buildMetadata({
   title: `Dr. Satish Jadhav MD | Piles Specialist Doctor in Wakad Pune`,
-  description: `Meet ${siteConfig.doctor.name}, ${siteConfig.doctor.title} — ${siteConfig.stats.patients} patients, ${siteConfig.stats.successRate} success. VAAFT, laser piles & fistula expert at NABH centre, Wakad.`,
+  description: `Meet ${siteConfig.doctor.name}, ${siteConfig.doctor.title} — ${siteConfig.stats.patients} patients, ${siteConfig.stats.successRate} success. DLAFT laser piles & fistula expert at NABH centre, Wakad.`,
   path: "/doctors",
-  keywords: ["dr satish jadhav", "piles specialist doctor pune", "proctologist wakad", "VAAFT fistula"],
+  keywords: ["dr satish jadhav", "piles specialist doctor pune", "proctologist wakad", "DLAFT fistula laser"],
 });
 
 export default function DoctorsPage() {
@@ -85,12 +85,12 @@ export default function DoctorsPage() {
                 ))}
               </div>
 
-              <Link
-                href="/contact#appointment"
+              <a
+                href={`tel:${siteConfig.phone}`}
                 className="mt-8 inline-block rounded-xl bg-accent-600 px-6 py-3 font-semibold text-white hover:bg-accent-500"
               >
                 Book Consultation
-              </Link>
+              </a>
             </div>
           </article>
         </div>

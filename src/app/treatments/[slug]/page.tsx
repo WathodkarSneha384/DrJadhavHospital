@@ -138,20 +138,13 @@ export default async function TreatmentDetailPage({ params }: Props) {
             <aside className="h-fit rounded-xl p-6" style={{ background: "linear-gradient(135deg, #f8f9fc, #f0f2f8)", border: "1px solid rgba(13,31,74,0.08)" }}>
               <h3 className="font-display text-lg font-bold text-brand-900">Book Consultation in Wakad</h3>
               <p className="mt-2 text-sm text-slate-600">Speak with {siteConfig.doctor.name} for a personalised treatment plan.</p>
-              <Link href="/contact#appointment" className="mt-4 flex items-center justify-center rounded-lg py-3 text-sm font-bold text-white"
+              <a href={`tel:${siteConfig.phone}`} className="mt-4 flex items-center justify-center rounded-lg py-3 text-sm font-bold text-white"
                 style={{ background: "linear-gradient(135deg, #c9973e, #9a6f0a)" }}>
                 Book Appointment
-              </Link>
-              <a href={`tel:${siteConfig.phone}`} className="mt-3 flex items-center justify-center gap-2 rounded-lg border-2 border-brand-200 py-3 text-sm font-semibold text-brand-800 hover:bg-white">
-                📞 {siteConfig.phoneDisplay}
               </a>
-              <div className="mt-5 space-y-2 border-t border-surface-200 pt-5">
-                <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Also available via</p>
-                <a href={`https://wa.me/${siteConfig.whatsapp}`} target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm font-semibold text-green-700 hover:underline">
-                  💬 WhatsApp Chat
-                </a>
-              </div>
+              <a href={`tel:${siteConfig.phoneAlt}`} className="mt-3 flex items-center justify-center gap-2 rounded-lg border-2 border-brand-200 py-3 text-sm font-semibold text-brand-800 hover:bg-white">
+                📞 {siteConfig.phoneAltDisplay}
+              </a>
             </aside>
           </div>
         </section>

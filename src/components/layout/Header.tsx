@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone, ChevronDown, Clock, MapPin, Award, Calendar } from "lucide-react";
+import { Menu, X, Phone, ChevronDown, Clock, MapPin, Award } from "lucide-react";
 import { navLinks, siteConfig } from "@/lib/site";
+import { BookAppointmentButton } from "@/components/ui/BookAppointmentButton";
 import { cn } from "@/lib/utils";
-import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -35,13 +36,18 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 shrink-0" onClick={() => setMobileOpen(false)}>
             <div
-              className="flex h-11 w-11 items-center justify-center rounded-lg font-display text-sm font-extrabold text-white shrink-0"
-              style={{
-                background: "linear-gradient(135deg, #0a1745 0%, #1e3897 100%)",
-                boxShadow: "0 0 0 2px rgba(201,151,62,0.5), 0 4px 12px rgba(10,23,69,0.3)",
-              }}
+              className="flex shrink-0 items-center justify-center rounded-lg bg-white p-1"
+              style={{ boxShadow: "0 0 0 2px rgba(201,151,62,0.5), 0 4px 12px rgba(10,23,69,0.2)" }}
             >
-              DJ
+              <Image
+                src="/Asset/logo-fixed.png"
+                alt="Dr. Jadhav Laser Centre Logo"
+                width={44}
+                height={54}
+                className="h-[44px] w-[44px] object-contain object-center"
+                sizes="44px"
+                priority
+              />
             </div>
             <div className="leading-tight">
               <p className="font-display text-[15px] font-bold text-brand-900 whitespace-nowrap">
@@ -84,15 +90,7 @@ export function Header() {
 
           {/* Right — CTA + mobile toggle */}
           <div className="flex items-center gap-2 shrink-0">
-            <LanguageSwitcher />
-            <Link
-              href="/contact#appointment"
-              className="hidden items-center gap-2 rounded-lg px-4 py-2.5 text-[13px] font-bold text-white shadow-md transition hover:scale-[1.02] hover:shadow-lg md:flex whitespace-nowrap"
-              style={{ background: "linear-gradient(135deg, #c9973e 0%, #9a6f0a 100%)" }}
-            >
-              <Calendar className="h-4 w-4 shrink-0" />
-              Book Appointment
-            </Link>
+            <BookAppointmentButton className="hidden md:inline-flex" />
             <button
               type="button"
               className="rounded-lg p-2.5 text-slate-600 transition hover:bg-surface-100 lg:hidden"
@@ -243,15 +241,10 @@ export function Header() {
             </nav>
 
             <div className="px-4 pb-4 pt-2">
-              <Link
-                href="/contact#appointment"
-                className="flex w-full items-center justify-center gap-2 rounded-lg py-3 text-sm font-bold text-white"
-                style={{ background: "linear-gradient(135deg, #c9973e 0%, #9a6f0a 100%)" }}
+              <BookAppointmentButton
+                className="flex w-full justify-center py-3 text-sm"
                 onClick={() => setMobileOpen(false)}
-              >
-                <Calendar className="h-4 w-4" />
-                Book Appointment
-              </Link>
+              />
             </div>
           </motion.div>
         )}

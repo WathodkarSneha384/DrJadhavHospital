@@ -1,14 +1,14 @@
 "use client";
 
-import Link from "next/link";
-import { Phone, Calendar, ArrowRight } from "lucide-react";
+import { Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/site";
+import { BookAppointmentButton } from "@/components/ui/BookAppointmentButton";
 import { AnimateIn } from "@/components/motion/AnimateIn";
 
 export function CTABanner() {
   return (
-    <section className="py-24">
+    <section className="py-12">
       <div className="mx-auto max-w-7xl px-4">
         <AnimateIn direction="up">
           <div
@@ -60,17 +60,9 @@ export function CTABanner() {
               </p>
 
               <div className="mt-10 flex flex-wrap justify-center gap-4">
-                <Link
-                  href="/contact#appointment"
-                  className="inline-flex items-center gap-2 rounded-md px-8 py-3.5 text-sm font-bold text-white shadow-lg transition hover:scale-[1.02] hover:shadow-xl"
-                  style={{ background: "linear-gradient(135deg, #c9973e 0%, #b8860b 100%)" }}
-                >
-                  <Calendar className="h-4.5 w-4.5" />
-                  Book Appointment
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
+                <BookAppointmentButton className="rounded-md px-8 py-3.5 text-sm shadow-lg" />
                 <a
-                  href={`tel:${siteConfig.phone}`}
+                  href={siteConfig.phoneTel}
                   className="inline-flex items-center gap-2 rounded-md border-2 px-8 py-3.5 text-sm font-bold backdrop-blur transition hover:scale-[1.02]"
                   style={{ borderColor: "rgba(255,255,255,0.25)", background: "rgba(255,255,255,0.06)" }}
                 >

@@ -6,8 +6,8 @@ import { JsonLd } from "@/components/JsonLd";
 import { AppointmentForm } from "@/components/contact/AppointmentForm";
 
 export const metadata: Metadata = buildMetadata({
-  title: `Book Appointment | Dr. Jadhav Piles Laser Centre Wakad Pune`,
-  description: `Book a piles treatment appointment in Wakad, Pune. Call ${siteConfig.phoneDisplay}. Address: ${fullAddress}. Mon–Sat 9AM–8PM · Same-day appointments available.`,
+  title: `Contact & Call | Dr. Jadhav Piles Laser Centre Wakad Pune`,
+  description: `Call ${siteConfig.phoneDisplay} to book piles treatment in Wakad, Pune. Address: ${fullAddress}. Mon–Sat 9AM–8PM · Same-day appointments available.`,
   path: "/contact",
   keywords: ["book piles appointment pune", "piles doctor appointment wakad", "dr jadhav contact", "piles clinic wakad address", "piles treatment near me"],
 });
@@ -28,7 +28,7 @@ export default function ContactPage() {
             Book Your Appointment
           </h1>
           <p className="mt-3 max-w-xl text-base leading-relaxed text-blue-100/80">
-            Visit our Wakad centre or book online. We&apos;re here to help you get relief from piles, fissure &amp; fistula.
+            Tap Book Appointment to call {siteConfig.phoneDisplay}. Visit our Wakad centre for same-day consultation.
           </p>
         </div>
       </section>

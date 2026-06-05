@@ -9,9 +9,9 @@ import { AnimateIn } from "@/components/motion/AnimateIn";
 
 export function DoctorPreview() {
   return (
-    <section className="bg-surface-50 py-24">
+    <section className="bg-surface-50 py-12">
       <div className="mx-auto max-w-7xl px-4">
-        <AnimateIn direction="up" className="mb-14 text-center">
+        <AnimateIn direction="up" className="mb-8 text-center">
           <p className="section-eyebrow mb-3">Expert Care</p>
           <div className="gold-rule mb-5" />
           <h2 className="font-display text-3xl font-bold text-brand-900 sm:text-4xl">
@@ -24,7 +24,7 @@ export function DoctorPreview() {
           style={{ border: "1px solid rgba(13,31,74,0.08)", boxShadow: "0 12px 48px -8px rgba(13,31,74,0.14)" }}
         >
           {/* Image column */}
-          <AnimateIn direction="left" className="relative">
+          <AnimateIn direction="up" className="relative">
             <div className="relative min-h-[320px] overflow-hidden lg:h-full" style={{ background: "#f0f2f8" }}>
               <Image
                 src={siteConfig.doctor.image}
@@ -52,7 +52,7 @@ export function DoctorPreview() {
           </AnimateIn>
 
           {/* Info column */}
-          <AnimateIn direction="right" delay={0.15} className="bg-white p-8 lg:p-10">
+          <AnimateIn direction="up" delay={0.08} className="bg-white p-8 lg:p-10">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
                 <h3 className="font-display text-3xl font-bold text-brand-900">
@@ -103,13 +103,13 @@ export function DoctorPreview() {
               >
                 Full Profile
               </Link>
-              <Link
-                href="/contact#appointment"
+              <a
+                href={`tel:${siteConfig.phone}`}
                 className="rounded-md px-6 py-2.5 text-sm font-bold text-white shadow-md transition hover:shadow-lg"
                 style={{ background: "linear-gradient(135deg, #c9973e, #b8860b)" }}
               >
                 Consult Now
-              </Link>
+              </a>
             </div>
           </AnimateIn>
         </div>

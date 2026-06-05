@@ -7,10 +7,10 @@ import { locations } from "@/lib/locations";
 export function AreasServed() {
   return (
     <div
-      className="overflow-hidden py-3"
+      className="overflow-hidden py-3 w-full"
       style={{ background: "linear-gradient(90deg, #060e2e 0%, #0a1745 50%, #0e1f5e 100%)" }}
     >
-      <div className="group relative flex">
+      <div className="group relative flex w-full overflow-hidden">
         {/* Moving track — duplicated for seamless loop */}
         <div
           className="marquee-track flex shrink-0 items-center gap-0"

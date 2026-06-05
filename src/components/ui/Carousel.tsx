@@ -1,13 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, Children } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type CarouselProps = {
-  children: React.ReactNode[];
+  children: React.ReactNode;
   className?: string;
   slideClassName?: string;
   autoplay?: boolean;
@@ -30,10 +30,19 @@ export function Carousel({
   align = "start",
 }: CarouselProps) {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const slides = Children.toArray(children);
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop, align, skipSnaps: false },
-    autoplay ? [Autoplay({ delay: autoplayDelay, stopOnInteraction: false })] : []
+    {
+      loop: loop && slides.length > 1,
+      align,
+      skipSnaps: false,
+      containScroll: "trimSnaps",
+      dragFree: false,
+    },
+    autoplay && slides.length > 1
+      ? [Autoplay({ delay: autoplayDelay, stopOnInteraction: false })]
+      : []
   );
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
@@ -48,16 +57,21 @@ export function Carousel({
     return () => {
       emblaApi.off("select", onSelect);
     };
-  }, [emblaApi]);
+  }, [emblaApi, slides.length]);
+
+  if (slides.length === 0) return null;
 
   return (
-    <div className={cn("relative", className)}>
-      <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex touch-pan-y">
-          {children.map((child, i) => (
+    <div className={cn("relative w-full min-w-0", className)}>
+      <div className="w-full min-w-0 overflow-hidden" ref={emblaRef}>
+        <div className="flex touch-pan-x">
+          {slides.map((child, i) => (
             <div
               key={i}
-              className={cn("min-w-0 shrink-0 grow-0 basis-full", slideClassName)}
+              className={cn(
+                "min-w-0 w-0 shrink-0 grow-0 basis-full overflow-hidden",
+                slideClassName
+              )}
             >
               {child}
             </div>
@@ -65,12 +79,12 @@ export function Carousel({
         </div>
       </div>
 
-      {showArrows && children.length > 1 && (
+      {showArrows && slides.length > 1 && (
         <>
           <button
             type="button"
             onClick={scrollPrev}
-            className="absolute left-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-brand-900/80 text-white shadow-lg backdrop-blur-md transition hover:bg-brand-800 hover:scale-105"
+            className="absolute left-1 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-brand-900/80 text-white shadow-lg backdrop-blur-md transition hover:scale-105 sm:flex"
             aria-label="Previous slide"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -78,7 +92,7 @@ export function Carousel({
           <button
             type="button"
             onClick={scrollNext}
-            className="absolute right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-brand-900/80 text-white shadow-lg backdrop-blur-md transition hover:bg-brand-800 hover:scale-105"
+            className="absolute right-1 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-brand-900/80 text-white shadow-lg backdrop-blur-md transition hover:scale-105 sm:flex"
             aria-label="Next slide"
           >
             <ChevronRight className="h-5 w-5" />
@@ -86,18 +100,18 @@ export function Carousel({
         </>
       )}
 
-      {showDots && children.length > 1 && (
-        <div className="mt-6 flex justify-center gap-2">
-          {children.map((_, i) => (
+      {showDots && slides.length > 1 && (
+        <div className="mt-4 flex justify-center gap-1.5">
+          {slides.map((_, i) => (
             <button
               key={i}
               type="button"
               onClick={() => scrollTo(i)}
               className={cn(
-                "h-2 rounded-full transition-all duration-300",
+                "h-1.5 rounded-full transition-all duration-300",
                 i === selectedIndex
-                  ? "w-8 bg-accent-500"
-                  : "w-2 bg-brand-300 hover:bg-brand-400"
+                  ? "w-6 bg-accent-500"
+                  : "w-1.5 bg-brand-300 hover:bg-brand-400"
               )}
               aria-label={`Go to slide ${i + 1}`}
             />

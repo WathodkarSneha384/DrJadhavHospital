@@ -26,7 +26,7 @@ const cardAccents = [
 export function TreatmentsGrid() {
   return (
     <section
-      className="relative overflow-hidden py-16"
+      className="relative overflow-hidden py-12"
       style={{ background: "linear-gradient(180deg, #ffffff 0%, #f8f9fc 100%)" }}
       aria-labelledby="treatments-heading"
     >
@@ -42,7 +42,7 @@ export function TreatmentsGrid() {
       <div className="relative mx-auto max-w-7xl px-4">
 
         {/* Header */}
-        <AnimateIn direction="up" className="mb-8 flex flex-col items-center text-center lg:flex-row lg:items-end lg:justify-between lg:text-left">
+        <AnimateIn direction="up" className="mb-8 text-center">
           <div>
             <p className="section-eyebrow mb-3">Our Specialities</p>
             <div className="gold-rule mb-5 lg:mx-0" />
@@ -59,7 +59,7 @@ export function TreatmentsGrid() {
           </div>
           <Link
             href="/treatments"
-            className="mt-6 hidden items-center gap-2 rounded-lg border-2 border-brand-200 px-6 py-3 text-sm font-bold text-brand-800 transition hover:border-brand-400 hover:bg-white lg:flex whitespace-nowrap"
+            className="mt-4 inline-flex items-center gap-2 rounded-lg border-2 border-brand-200 px-6 py-2.5 text-sm font-bold text-brand-800 transition hover:border-brand-400 hover:bg-white"
           >
             All Treatments
             <ArrowUpRight className="h-4 w-4" />
@@ -76,10 +76,10 @@ export function TreatmentsGrid() {
             return (
               <motion.article
                 key={treatment.slug}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                viewport={{ once: true, margin: "0px 0px -40px 0px" }}
+                transition={{ delay: i * 0.05, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
                 whileHover={{ y: -6 }}
                 className="group relative flex flex-col overflow-hidden rounded-xl bg-white"
                 style={{

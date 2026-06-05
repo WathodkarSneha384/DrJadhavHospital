@@ -32,7 +32,7 @@ const tabContent: Record<string, { points: string[]; image: string }> = {
   fistula: {
     points: [
       "DLAFT laser fistulotomy",
-      "VAAFT for complex cases",
+      "DLAFT for complex cases",
       "Very low recurrence rate",
       "Preserves sphincter function",
     ],
@@ -55,9 +55,9 @@ export function TreatmentShowcase() {
   const content = tabContent[active] ?? tabContent.piles;
 
   return (
-    <section className="bg-surface-50 py-24">
+    <section className="bg-surface-50 py-12">
       <div className="mx-auto max-w-7xl px-4">
-        <AnimateIn direction="up" className="mb-12 text-center">
+        <AnimateIn direction="up" className="mb-8 text-center">
           <p className="section-eyebrow mb-3">Conditions We Treat</p>
           <div className="gold-rule mb-5" />
           <h2 className="font-display text-3xl font-bold text-brand-900 sm:text-4xl">
@@ -99,10 +99,10 @@ export function TreatmentShowcase() {
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 30 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="p-8 lg:p-10"
             >
               <span
@@ -119,9 +119,9 @@ export function TreatmentShowcase() {
                 {content.points.map((point, i) => (
                   <motion.li
                     key={point}
-                    initial={{ opacity: 0, x: -16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.07 }}
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.04, duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
                     className="flex items-center gap-3 text-sm text-slate-700"
                   >
                     <CheckCircle className="h-5 w-5 shrink-0 text-accent-600" />
@@ -143,10 +143,10 @@ export function TreatmentShowcase() {
           <AnimatePresence mode="wait">
             <motion.div
               key={`img-${active}`}
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.96 }}
-              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="relative aspect-[4/3] overflow-hidden lg:rounded-r-xl"
             >
               <Image
